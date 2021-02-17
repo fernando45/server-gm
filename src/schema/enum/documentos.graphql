@@ -1,0 +1,9 @@
+enum Documentos {
+    DNI
+    CIF
+    NIF
+    NIE
+    PASAPORTE
+    OTRO
+    NO CENSADO
+}

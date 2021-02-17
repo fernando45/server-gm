@@ -1,0 +1,82 @@
+type Query {
+    "Obtenemos las lista de todos los usuarios"
+    users(skip: Int, limit: Int, orden: String, filter: String): QueryUser!
+    "Iniciamos sesión en el sistema"
+    login(email: String!, password: String!): ResultToken!  
+    "Obtener nuestra información con el token"
+    renuevaToken(email: String!): ResultToken! 
+    me: ResultUser!
+    userPorId(id: String!): ResultUser!
+    userPorEmail(email: String!): ResultUser!
+    "Total recuento"
+    totalCount: String  
+}
+
+type Mutation {
+    "Registro de los usuarios en el sistema"
+    register(user: UserInput): ResultUser!   
+    actualizarUsuario(user: UserInput): ResultUser!
+    eliminarUsuario(id: String!): ResultUser
+    actualizaImagen(user: UserImg!): ResultUser
+}
+
+
+type User {
+    _id: String
+    nombre: String!
+    apellidos: String
+    email: String!
+    img: String
+    password: String
+    registerDate: String
+    modified_at: String
+    estado: Boolean
+    google: Boolean
+    role: Roles
+}
+
+input UserImg {
+    _id: String 
+    img: String
+}
+
+input UserInput {
+    _id: String
+    nombre: String!
+    apellidos: String
+    email: String!
+    img: String
+    password: String
+    google: Boolean
+    role: Roles
+
+}
+
+
+
+type ResultUser {
+    status: Boolean!
+    message: String!
+    user: User
+
+}
+
+type ResultImg {
+    status: Boolean!
+}
+ 
+
+type ResultToken {
+    status: Boolean!
+    message: String!
+    token: String 
+    user: User
+    
+}
+
+
+type QueryUser {
+    status: Boolean
+    message: String!
+    user: [User]!   
+}

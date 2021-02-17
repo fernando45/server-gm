@@ -1,0 +1,6 @@
+enum TipoContacto {
+    telefono
+    web
+    Email
+    movil
+}

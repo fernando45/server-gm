@@ -1,0 +1,7 @@
+enum Roles {
+    ADMIN
+    CLIENTE
+    SUPERVISOR
+    OPERARIO
+    USUARIO
+}

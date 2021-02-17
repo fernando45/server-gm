@@ -1,0 +1,64 @@
+
+type Query {
+ clientes(skip: Int, limit: Int, orden: String, filter: String): QueryCliente!
+}
+
+type Mutation {
+    "Registro de los clientes en el sistema"
+    registroCliente(cliente: ClienteInput): ResultCliente!   
+  
+}
+
+
+type  Cliente {
+    _id: String
+    documentos: Documentos
+    documento: String
+    nombre: String! 
+    contacto: [ContactoCliente]   
+    registerDate: String
+    modified_at: String
+    estado: Boolean   
+}
+
+type  ContactoCliente {
+    _id: String
+    tipo: TipoContacto
+    valor: String
+    admin: Boolean
+    Direccion: Boolean
+    comercial: Boolean
+    
+}
+
+type QueryCliente {
+    status: Boolean
+    message: String!
+    cliente: [Cliente]!  
+}
+
+input ClienteInput {
+    
+    _id: String
+    documentos: Documentos
+    documento: String
+    nombre: String! 
+    contacto: [ContactoClienteInput]      
+    estado: Boolean  
+}
+
+input ContactoClienteInput {
+     _id: String
+    tipo: TipoContacto
+    valor: String
+    admin: Boolean
+    Direccion: Boolean
+    comercial: Boolean
+
+}
+
+type ResultCliente {
+    status: Boolean!
+    message: String!
+    cliente: Cliente
+}
